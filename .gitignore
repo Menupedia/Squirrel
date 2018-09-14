@@ -168,10 +168,10 @@ typings/
 
 ### VisualStudioCode ###
 .vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+# !.vscode/settings.json
+# !.vscode/tasks.json
+# !.vscode/launch.json
+# !.vscode/extensions.json
 
 ### WebStorm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
@@ -276,3 +276,5 @@ $RECYCLE.BIN/
 
 
 # End of https://www.gitignore.io/api/node,macos,windows,webstorm,visualstudiocodet
+Squirrel.zip
+config.js
