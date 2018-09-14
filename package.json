@@ -1,0 +1,29 @@
+{
+  "name": "squirrel",
+  "version": "1.0.0",
+  "description": "Lambda function to compress images from S3 bucket.",
+  "main": "index.js",
+  "scripts": {
+    "pack": "zip -r ./Squirrel.zip ./* -x *.git*,Squirrel.zip,*.vscode*",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Menupedia/Squirrel.git"
+  },
+  "keywords": [
+    "S3",
+    "Lambda",
+    "image"
+  ],
+  "author": "Yoga Lin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Menupedia/Squirrel/issues"
+  },
+  "homepage": "https://github.com/Menupedia/Squirrel#readme",
+  "dependencies": {
+    "aws-sdk": "^2.311.0",
+    "gm": "^1.23.1"
+  }
+}
