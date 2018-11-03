@@ -1,6 +1,7 @@
 let config = {
-    destinationBucketName: "example-bucket",
-    size: [300, 600, 1000]
-}
+  destinationBucketName: 'example-bucket',
+  quality: 70,
+  size: [300, 500, 900]
+};
 
 module.exports = config;

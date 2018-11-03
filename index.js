@@ -1,6 +1,6 @@
-const aws = require("aws-sdk");
-const fs = require("fs");
-const gm = require("gm").subClass({
+const aws = require('aws-sdk');
+const fs = require('fs');
+const gm = require('gm').subClass({
   imageMagick: true
 });
 const config = require('./config');
@@ -35,7 +35,12 @@ exports.handler = async (event, context, callback) => {
       return savePicture(objectKey, content, '', data.ContentType);
     } else {
       const content = await resizePicture(data.Body, size, data.ContentType);
-      return savePicture(objectKey, content, size + 'x' + size + '/', data.ContentType);
+      return savePicture(
+        objectKey,
+        content,
+        size + 'x' + size + '/',
+        data.ContentType
+      );
     }
   }
 
@@ -46,7 +51,7 @@ exports.handler = async (event, context, callback) => {
         Key: size + objectKey,
         Body: content,
         ContentType: type,
-        ACL: "public-read"
+        ACL: 'public-read'
       })
       .promise();
   }
@@ -54,8 +59,8 @@ exports.handler = async (event, context, callback) => {
   function compressPicture(stream, type) {
     return new Promise((resolve, reject) => {
       gm(stream)
-        .quality(70)
-        .toBuffer(type.split('/').pop(), function (err, buffer) {
+        .quality(config.quality)
+        .toBuffer(type.split('/').pop(), function(err, buffer) {
           if (err) reject(err);
           resolve(buffer);
         });
@@ -66,8 +71,9 @@ exports.handler = async (event, context, callback) => {
     return new Promise((resolve, reject) => {
       console.log('gm: size ' + size);
       gm(stream)
+        .quality(config.quality)
         .resize(size, size)
-        .toBuffer(type.split('/').pop(), function (err, buffer) {
+        .toBuffer(type.split('/').pop(), function(err, buffer) {
           if (err) reject(err);
           resolve(buffer);
         });
